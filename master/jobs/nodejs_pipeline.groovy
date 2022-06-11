@@ -1,12 +1,15 @@
-pipelineJob("nodejs-pipeline"){
-    activeChoiceReactiveParam('REGISTERY') {
-    description('Please Select Registery')
-    filterable()
-    choiceType('SINGLE_SELECT')
-    groovyScript {
-                script('["DockerHub", "GitlabRegistery"]')
-                fallbackScript('"fallback choice"')
-        }
+pipelineJob('NodeJSPipeline') {
+    parameters {
+                activeChoiceReactiveParam('REGISTERY') {
+                    description('Select Registery')
+                    filterable(true)
+                    choiceType('SINGLE_SELECT')
+                    groovyScript {
+                        script('''["DockerHub", "GitLabRegistery"]''')
+                        fallbackScript('"fallback choice"')
+                    }
+                    referencedParameter('')
+                }
     }
 
     definition {
@@ -36,7 +39,4 @@ pipelineJob("nodejs-pipeline"){
             scriptPath('./Jenkinsfile')
         }
     }
-
-
-
 }
