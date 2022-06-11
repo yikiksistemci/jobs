@@ -1,4 +1,4 @@
-job('flask-app-job-with-dsl') {
+job('hello-world') {
   steps {
     shell(''' 
         echo "Hello World !!!"
